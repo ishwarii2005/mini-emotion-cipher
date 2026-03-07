@@ -1,5 +1,6 @@
 # Mini Emotion Cipher
-## Live demo- https://mini-emotion-cipher-ish.streamlit.app/
+## Hosted on- https://mini-emotion-cipher-ish.streamlit.app/
+## Demo- https://drive.google.com/drive/folders/1L6kKhELLTQFgQuRr2KPKZEEK-aPKp_B2?usp=sharing
 
 Mini Emotion Cipher is a privacy-preserving system that detects the emotional context of a message while keeping the actual text encrypted.
 
