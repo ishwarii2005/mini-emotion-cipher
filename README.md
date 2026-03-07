@@ -1,21 +1,89 @@
 # Mini Emotion Cipher
+## Live demo- https://mini-emotion-cipher-ish.streamlit.app/
 
-Mini Emotion Cipher is a privacy-preserving emotion analysis system that detects emotional context in user messages while keeping the actual text encrypted.
+Mini Emotion Cipher is a privacy-preserving system that detects the emotional context of a message while keeping the actual text encrypted.
 
-## Features
-- Transformer-based emotion detection
-- Multi-emotion analysis
-- Multilingual support
-- AES encryption for message privacy
-- Emotion metadata preservation
-- Emotion analytics dashboard
-- Emotion caching for faster processing
-- Adaptive vocabulary learning
+The idea is simple:  
+even when the message is protected, the emotional signal can still be used for analytics, moderation, or insights.
 
-## How it Works
-1. User inputs a message
-2. Language detection + translation (if needed)
-3. Emotion detection using DistilRoBERTa
-4. Top emotions encoded as metadata
-5. Message encrypted using AES
-6. Emotional signature preserved for analysis
+---
+
+## What the System Does
+
+1. User enters a message
+2. The system detects emotions using a transformer model
+3. The message is encrypted using AES
+4. Emotional metadata is encoded and attached to the encrypted packet
+5. The message can be decrypted later while preserving the emotion signature
+
+---
+
+## Key Features
+
+- **Transformer-based Emotion Detection**  
+  Uses a DistilRoBERTa emotion model for accurate emotion classification.
+
+- **Multi-Emotion Detection**  
+  Extracts the top two emotions with confidence scores.
+
+- **Emotion Metadata Encoding**  
+  Emotional signals are encoded as lightweight emotion codes.
+
+- **Secure AES Encryption**  
+  The original message is encrypted to ensure privacy.
+
+- **Emotion-Aware Decryption**  
+  Decryption restores both the message and the detected emotional context.
+
+- **Multilingual Input Support**  
+  Messages in different languages are translated before emotion detection.
+
+- **Emotion Caching**  
+  Previously analyzed messages are cached for faster processing.
+
+- **Adaptive User Vocabulary Learning**  
+  The system gradually learns patterns in how a user expresses emotions.
+
+- **Emotion Analytics Dashboard**  
+  Displays overall emotion distribution across messages.
+
+---
+
+## Example Encrypted Packet
+
+```json
+{
+  "emotion_code": "02|03",
+  "encrypted_text": "gAAAAAB..."
+}
+```
+
+Decoded emotions: Sadness, Anger
+
+
+## Why This Is Interesting
+
+Traditional encryption hides everything.
+Mini Emotion Cipher explores a different idea: protect the message, but retain emotional insight.
+
+This can enable:
+
+privacy-aware sentiment analysis
+
+secure mental health monitoring
+
+encrypted communication analytics
+
+## Tech Stack
+
+Python
+
+Streamlit
+
+HuggingFace Transformers
+
+AES Encryption (cryptography)
+
+Deep Translator
+
+Matplotlib
