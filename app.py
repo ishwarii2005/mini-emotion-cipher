@@ -23,7 +23,7 @@ emotion_decode = {
 
 
 st.title("Mini Emotion Cipher")
-st.caption("Privacy-Preserving Emotion Intelligence System")
+st.caption("Emotion-aware encryption system that preserves emotional insight without exposing the message.")
 
 user_input = st.text_area("Enter your message")
 
@@ -75,14 +75,17 @@ if "emotions" in st.session_state:
     scores = []
 
     for emotion, score in emotions.items():
+
         labels.append(f"{emotion.capitalize()} {round(score*100,1)}%")
+
         scores.append(score)
 
     # combined label
     st.write(" | ".join(labels))
 
-    # single blue bar
-    st.progress(max(scores))
+    # single blue progress bar
+    if scores:
+        st.progress(min(max(scores), 1.0))
 
 
 # SHOW ENCRYPTED PACKET
@@ -109,7 +112,7 @@ if st.session_state.get("decrypted", False):
     message = st.session_state.decrypted_message
     code = st.session_state.decrypted_code
 
-    decoded = [emotion_decode[c] for c in code.split("|")]
+    decoded = [emotion_decode.get(c, "Unknown") for c in code.split("|")]
 
     st.write("Message:", message)
     st.write("Detected Emotions:", ", ".join(decoded))
