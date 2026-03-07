@@ -71,21 +71,16 @@ if "emotions" in st.session_state:
 
     emotions = st.session_state.emotions
 
-    labels = []
-    scores = []
-
     for emotion, score in emotions.items():
 
-        labels.append(f"{emotion.capitalize()} {round(score*100,1)}%")
+        # clamp values to avoid >100%
+        score = max(0, min(score, 1))
 
-        scores.append(score)
+        percent = round(score * 100, 1)
 
-    # combined label
-    st.write(" | ".join(labels))
+        st.write(f"{emotion.capitalize()} — {percent}%")
 
-    # single blue progress bar
-    if scores:
-        st.progress(min(max(scores), 1.0))
+        st.progress(score)
 
 
 # SHOW ENCRYPTED PACKET
