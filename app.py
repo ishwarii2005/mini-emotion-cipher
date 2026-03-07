@@ -73,14 +73,16 @@ if "emotions" in st.session_state:
 
     for emotion, score in emotions.items():
 
-        # clamp values to avoid >100%
+        # clamp score to valid range
         score = max(0, min(score, 1))
 
-        percent = round(score * 100, 1)
+        percent = min(round(score * 100, 1), 100)
+
+        bar_value = percent / 100
 
         st.write(f"{emotion.capitalize()} — {percent}%")
 
-        st.progress(score)
+        st.progress(bar_value)
 
 
 # SHOW ENCRYPTED PACKET
