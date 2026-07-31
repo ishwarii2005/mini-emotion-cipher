@@ -1,56 +1,138 @@
 # Mini Emotion Cipher
-## Hosted on- https://mini-emotion-cipher-ish.streamlit.app/
-## Demo- https://drive.google.com/drive/folders/1L6kKhELLTQFgQuRr2KPKZEEK-aPKp_B2?usp=sharing
 
-Mini Emotion Cipher is a privacy-preserving system that detects the emotional context of a message while keeping the actual text encrypted.
-
-The idea is simple:  
-even when the message is protected, the emotional signal can still be used for analytics, moderation, or insights.
+> A privacy-preserving messaging system that detects the emotional context of a message while keeping the original content securely encrypted. Built using Transformer-based NLP, AES encryption, and Streamlit.
 
 ---
 
-## What the System Does
+## Overview
 
-1. User enters a message
-2. The system detects emotions using a transformer model
-3. The message is encrypted using AES
-4. Emotional metadata is encoded and attached to the encrypted packet
-5. The message can be decrypted later while preserving the emotion signature
+Mini Emotion Cipher explores a different approach to secure communication. Instead of treating encryption and emotion analysis as separate tasks, the system combines them by preserving emotional context while protecting the original message.
+
+The application first detects emotions using a Transformer model, encrypts the message using AES encryption, and stores lightweight emotion metadata alongside the encrypted text. This enables privacy-aware analytics without exposing sensitive content.
 
 ---
 
-## Key Features
+## Features
 
-- **Transformer-based Emotion Detection**  
-  Uses a DistilRoBERTa emotion model for accurate emotion classification.
-
-- **Multi-Emotion Detection**  
-  Extracts the top two emotions with confidence scores.
-
-- **Emotion Metadata Encoding**  
-  Emotional signals are encoded as lightweight emotion codes.
-
-- **Secure AES Encryption**  
-  The original message is encrypted to ensure privacy.
-
-- **Emotion-Aware Decryption**  
-  Decryption restores both the message and the detected emotional context.
-
-- **Multilingual Input Support**  
-  Messages in different languages are translated before emotion detection.
-
-- **Emotion Caching**  
-  Previously analyzed messages are cached for faster processing.
-
-- **Adaptive User Vocabulary Learning**  
-  The system gradually learns patterns in how a user expresses emotions.
-
-- **Emotion Analytics Dashboard**  
-  Displays overall emotion distribution across messages.
+- Transformer-based emotion detection using DistilRoBERTa
+- Multi-emotion classification with confidence scores
+- AES encryption for secure message storage
+- Emotion metadata encoding
+- Emotion-aware decryption
+- Multilingual input support
+- Emotion prediction caching
+- Adaptive user vocabulary learning
+- Emotion analytics dashboard
 
 ---
 
-## Example Encrypted Packet
+## Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Language | Python |
+| Frontend | Streamlit |
+| NLP | Hugging Face Transformers |
+| Emotion Model | DistilRoBERTa |
+| Encryption | AES (Cryptography) |
+| Translation | Deep Translator |
+| Visualization | Matplotlib |
+
+---
+
+## Architecture
+
+```
+User Message
+      │
+      ▼
+Language Detection & Translation
+      │
+      ▼
+Emotion Detection (Transformer)
+      │
+      ▼
+Emotion Metadata Encoding
+      │
+      ▼
+AES Encryption
+      │
+      ▼
+Encrypted Emotion Packet
+      │
+      ▼
+Secure Storage / Analytics
+      │
+      ▼
+Message Decryption
+```
+
+---
+
+## Live Demo
+
+**Application**
+
+https://mini-emotion-cipher-ish.streamlit.app/
+
+**Demo Video**
+
+https://drive.google.com/drive/folders/1L6kKhELLTQFgQuRr2KPKZEEK-aPKp_B2
+
+---
+
+## Project Structure
+
+```
+Mini-Emotion-Cipher/
+│
+├── app.py
+├── encryption/
+├── emotion_detection/
+├── analytics/
+├── utils/
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
+
+---
+
+## Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/yourusername/Mini-Emotion-Cipher.git
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## Workflow
+
+1. User enters a message.
+2. Language is detected and translated if necessary.
+3. The Transformer model predicts the emotional context.
+4. Emotion metadata is encoded.
+5. The original message is encrypted using AES.
+6. An encrypted packet containing the encrypted message and emotion metadata is generated.
+7. During decryption, both the original message and emotion information are restored.
+
+---
+
+## Example Output
 
 ```json
 {
@@ -59,32 +141,42 @@ even when the message is protected, the emotional signal can still be used for a
 }
 ```
 
-Decoded emotions: Sadness, Anger
+Decoded emotions:
 
+- Sadness
+- Anger
 
-## Why This Is Interesting
+---
 
-Traditional encryption hides everything.
-Mini Emotion Cipher explores a different idea: protect the message, but retain emotional insight.
+## Applications
 
-This can enable:
+- Privacy-preserving communication
+- Mental health monitoring
+- Secure sentiment analysis
+- Communication analytics
+- Emotion-aware AI systems
 
-privacy-aware sentiment analysis
+---
 
-secure mental health monitoring
+## Future Improvements
 
-encrypted communication analytics
+- End-to-end encrypted messaging
+- Cloud database integration
+- User authentication
+- Mobile application
+- Advanced emotion analytics
+- Real-time conversations
 
-## Tech Stack
+---
 
-Python
+## License
 
-Streamlit
+This project is licensed under the MIT License.
 
-HuggingFace Transformers
+---
 
-AES Encryption (cryptography)
+## Author
 
-Deep Translator
+**Ishwari**
 
-Matplotlib
+If you found this project useful, consider giving it a star.
